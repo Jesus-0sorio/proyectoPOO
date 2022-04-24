@@ -44,4 +44,14 @@ public Reparacion(String tipo, String descripcion, double horas) {
         this.horas = horas;
     }
     
+    public double calcularValorReparacion(){
+        double res;
+        if(tipo.equals("SOFTWARE")){
+            res = horas*25000;
+        }
+        else{
+            res = horas*30000;
+        }
+        return res;
+    }
 }

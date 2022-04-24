@@ -8,7 +8,21 @@ package Modelo;
 /**
  *
  * @author LALU1026
+ * @author @jesus.osorio
  */
 public class ComputadorNoAfiliado {
+    private int costo;
+
+    public ComputadorNoAfiliado(int costo) {
+        this.costo = costo;
+    }
+
+    public int getCosto() {
+        return costo;
+    }
+
+    public void setCosto(int costo) {
+        this.costo = costo;
+    }
     
 }

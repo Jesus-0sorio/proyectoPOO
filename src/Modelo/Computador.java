@@ -8,6 +8,7 @@ package Modelo;
 /**
  *
  * @author LALU1026
+ * @author @jesus.osorio
  */
 public class Computador {
     protected String id;
