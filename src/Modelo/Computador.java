@@ -5,22 +5,24 @@
  */
 package Modelo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author LALU1026
- * @author @jesus.osorio
+ *
  */
 public class Computador {
     protected String id;
     protected String marca;
     protected Propietario suPropietario;
-    protected Reparacion susReparaciones ;
+    protected ArrayList<Reparacion> susReparaciones;
 
-    public Computador(String id, String marca, Propietario suPropietario, Reparacion susReparaciones) {
+    public Computador(String id, String marca, Propietario suPropietario) {
         this.id = id;
         this.marca = marca;
         this.suPropietario = suPropietario;
-        this.susReparaciones = susReparaciones;
+        susReparaciones = new ArrayList<>();
     }
 
     public String getId() {
@@ -47,14 +49,17 @@ public class Computador {
         this.suPropietario = suPropietario;
     }
 
-    public Reparacion getSusReparaciones() {
+    public ArrayList<Reparacion> getSusReparaciones() {
         return susReparaciones;
     }
 
-    public void setSusReparaciones(Reparacion susReparaciones) {
+    public void setSusReparaciones(ArrayList<Reparacion> susReparaciones) {
         this.susReparaciones = susReparaciones;
     }
 
-
+    @Override
+    public String toString() {
+        return "Computador{" + "id=" + id + ", marca=" + marca + ", suPropietario=" + suPropietario + ", susReparaciones=" + susReparaciones + '}';
+    }         
     
 }

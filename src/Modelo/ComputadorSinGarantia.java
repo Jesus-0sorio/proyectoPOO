@@ -8,12 +8,12 @@ package Modelo;
 /**
  *
  * @author LALU1026
- * @author @jesus.osorio
+ * 
  */
-public class ComputadorNoAfiliado {
+public class ComputadorSinGarantia {
     private int costo;
 
-    public ComputadorNoAfiliado(int costo) {
+    public ComputadorSinGarantia(int costo) {
         this.costo = costo;
     }
 
@@ -23,6 +23,11 @@ public class ComputadorNoAfiliado {
 
     public void setCosto(int costo) {
         this.costo = costo;
+    }
+
+    @Override
+    public String toString() {
+        return "ComputadorSinGarantia{" + "costo=" + costo + '}';
     }
     
 }

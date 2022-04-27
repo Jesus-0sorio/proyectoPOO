@@ -54,4 +54,9 @@ public Reparacion(String tipo, String descripcion, double horas) {
         }
         return res;
     }
+
+    @Override
+    public String toString() {
+        return "Reparacion{" + "tipo=" + tipo + ", descripcion=" + descripcion + ", horas=" + horas + '}';
+    }
 }
