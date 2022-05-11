@@ -30,7 +30,7 @@ public class ComputadorConGarantia extends Computador {
     public double calcularValorReparacion(){
         double res = 0;
         for(Reparacion obj: susReparaciones){
-            res = (obj.calcularValorReparacion())/5;
+            res += (obj.calcularValorReparacion())/5;
         }
         return res;
     }

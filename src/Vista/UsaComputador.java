@@ -38,27 +38,27 @@ public class UsaComputador extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jButton5 = new javax.swing.JButton();
-        jComboBox5 = new javax.swing.JComboBox<>();
+        jButtonEjecutar = new javax.swing.JButton();
+        jComboBoxTipoReporte = new javax.swing.JComboBox<>();
         jPanel24 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldIdComputador = new javax.swing.JTextField();
         jPanel12 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBoxMarca = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBoxGarantia = new javax.swing.JComboBox<>();
         jPanel6 = new javax.swing.JPanel();
-        jTextField2 = new javax.swing.JTextField();
+        jTextFieldGarantia = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
-        jTextField3 = new javax.swing.JTextField();
+        jTextFieldCosto = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jPanel19 = new javax.swing.JPanel();
@@ -66,32 +66,32 @@ public class UsaComputador extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jPanel21 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        jTextFieldCelular = new javax.swing.JTextField();
         jPanel22 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        jTextFieldNombre = new javax.swing.JTextField();
         jPanel23 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        jTextFieldCedula = new javax.swing.JTextField();
+        insertarComputador = new javax.swing.JButton();
         jPanel25 = new javax.swing.JPanel();
         jPanel32 = new javax.swing.JPanel();
         jPanel33 = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         jPanel34 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        jComboBoxTipoReparacion = new javax.swing.JComboBox<>();
         jPanel35 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
-        jTextField14 = new javax.swing.JTextField();
+        jTextFieldHorasReparacion = new javax.swing.JTextField();
         jPanel36 = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
-        jTextField15 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jTextFieldDescripcionReparacion = new javax.swing.JTextField();
+        jButtonInsertarReparacion = new javax.swing.JButton();
+        jButtonGuardarDatos = new javax.swing.JButton();
+        jButtonRecuperarDatos = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jButton6 = new javax.swing.JButton();
+        jButtonSalir = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -108,16 +108,16 @@ public class UsaComputador extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jButton5.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
-        jButton5.setText("EJECUTAR");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEjecutar.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
+        jButtonEjecutar.setText("EJECUTAR");
+        jButtonEjecutar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jButtonEjecutarActionPerformed(evt);
             }
         });
 
-        jComboBox5.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LISTAR TODOS", "UNICAMENTE" }));
+        jComboBoxTipoReporte.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
+        jComboBoxTipoReporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LISTAR TODOS", "UNICAMENTE" }));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -128,9 +128,9 @@ public class UsaComputador extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jComboBox5, 0, 117, Short.MAX_VALUE)
+                        .addComponent(jComboBoxTipoReporte, 0, 117, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonEjecutar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -140,8 +140,8 @@ public class UsaComputador extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonEjecutar)
+                    .addComponent(jComboBoxTipoReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
@@ -177,8 +177,8 @@ public class UsaComputador extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Lucida Console", 2, 12)); // NOI18N
         jLabel5.setText("IDENTIFICACIÓN");
 
-        jTextField1.setFont(new java.awt.Font("Lucida Console", 0, 11)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldIdComputador.setFont(new java.awt.Font("Lucida Console", 0, 11)); // NOI18N
+        jTextFieldIdComputador.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -188,7 +188,7 @@ public class UsaComputador extends javax.swing.JFrame {
                 .addGap(4, 4, 4)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+                .addComponent(jTextFieldIdComputador, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
@@ -197,7 +197,7 @@ public class UsaComputador extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldIdComputador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -208,7 +208,7 @@ public class UsaComputador extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Lucida Console", 2, 12)); // NOI18N
         jLabel4.setText("MARCA");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LENOVO", "HP", "ACER", "MAC", "SAMSUNG", "OTRA" }));
+        jComboBoxMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LENOVO", "HP", "ACER", "MAC", "SAMSUNG", "OTRA" }));
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -218,7 +218,7 @@ public class UsaComputador extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBoxMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel12Layout.setVerticalGroup(
@@ -227,18 +227,18 @@ public class UsaComputador extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        jComboBox1.setFont(new java.awt.Font("Lucida Console", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CON GARANTIA", "SIN GARANTIA" }));
+        jComboBoxGarantia.setFont(new java.awt.Font("Lucida Console", 0, 14)); // NOI18N
+        jComboBoxGarantia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CON GARANTIA", "SIN GARANTIA" }));
 
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jTextField2.setFont(new java.awt.Font("Lucida Console", 0, 11)); // NOI18N
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setText("AAAA-MM-DD");
+        jTextFieldGarantia.setFont(new java.awt.Font("Lucida Console", 0, 11)); // NOI18N
+        jTextFieldGarantia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldGarantia.setText("AAAA-MM-DD");
 
         jLabel6.setFont(new java.awt.Font("Lucida Console", 0, 10)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -265,7 +265,7 @@ public class UsaComputador extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField2)
+                    .addComponent(jTextFieldGarantia)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -277,7 +277,7 @@ public class UsaComputador extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldGarantia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addContainerGap())
@@ -285,9 +285,9 @@ public class UsaComputador extends javax.swing.JFrame {
 
         jPanel13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jTextField3.setFont(new java.awt.Font("Lucida Console", 0, 11)); // NOI18N
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.setText("$$$");
+        jTextFieldCosto.setFont(new java.awt.Font("Lucida Console", 0, 11)); // NOI18N
+        jTextFieldCosto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldCosto.setText("$$$");
 
         jLabel8.setFont(new java.awt.Font("Lucida Console", 0, 10)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -303,7 +303,7 @@ public class UsaComputador extends javax.swing.JFrame {
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField3)
+                    .addComponent(jTextFieldCosto)
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jLabel10)
@@ -317,7 +317,7 @@ public class UsaComputador extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addComponent(jLabel10)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldCosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addContainerGap())
@@ -341,7 +341,7 @@ public class UsaComputador extends javax.swing.JFrame {
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(50, 50, 50)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jComboBoxGarantia, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -356,7 +356,7 @@ public class UsaComputador extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBoxGarantia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -394,8 +394,8 @@ public class UsaComputador extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Lucida Console", 2, 12)); // NOI18N
         jLabel15.setText("CELULAR");
 
-        jTextField7.setFont(new java.awt.Font("Lucida Console", 0, 11)); // NOI18N
-        jTextField7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldCelular.setFont(new java.awt.Font("Lucida Console", 0, 11)); // NOI18N
+        jTextFieldCelular.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
@@ -405,7 +405,7 @@ public class UsaComputador extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel21Layout.setVerticalGroup(
@@ -414,7 +414,7 @@ public class UsaComputador extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -425,8 +425,8 @@ public class UsaComputador extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Lucida Console", 2, 12)); // NOI18N
         jLabel16.setText("NOMBRE");
 
-        jTextField8.setFont(new java.awt.Font("Lucida Console", 0, 11)); // NOI18N
-        jTextField8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldNombre.setFont(new java.awt.Font("Lucida Console", 0, 11)); // NOI18N
+        jTextFieldNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
         jPanel22.setLayout(jPanel22Layout);
@@ -436,7 +436,7 @@ public class UsaComputador extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel22Layout.setVerticalGroup(
@@ -445,7 +445,7 @@ public class UsaComputador extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -457,8 +457,8 @@ public class UsaComputador extends javax.swing.JFrame {
         jLabel17.setText("CEDULA");
         jLabel17.setToolTipText("");
 
-        jTextField9.setFont(new java.awt.Font("Lucida Console", 0, 11)); // NOI18N
-        jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldCedula.setFont(new java.awt.Font("Lucida Console", 0, 11)); // NOI18N
+        jTextFieldCedula.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
         jPanel23.setLayout(jPanel23Layout);
@@ -468,7 +468,7 @@ public class UsaComputador extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel17)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel23Layout.setVerticalGroup(
@@ -477,7 +477,7 @@ public class UsaComputador extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -508,11 +508,11 @@ public class UsaComputador extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
         );
 
-        jButton3.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
-        jButton3.setText("INSERTAR COMPUTADOR");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        insertarComputador.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
+        insertarComputador.setText("INSERTAR COMPUTADOR");
+        insertarComputador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                insertarComputadorActionPerformed(evt);
             }
         });
 
@@ -530,7 +530,7 @@ public class UsaComputador extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel24Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(insertarComputador, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel24Layout.setVerticalGroup(
@@ -541,7 +541,7 @@ public class UsaComputador extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
+                .addComponent(insertarComputador)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -577,8 +577,8 @@ public class UsaComputador extends javax.swing.JFrame {
         jLabel28.setFont(new java.awt.Font("Lucida Console", 2, 12)); // NOI18N
         jLabel28.setText("TIPO");
 
-        jComboBox3.setFont(new java.awt.Font("Lucida Console", 0, 11)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SOFTWARE", "HARDWARE" }));
+        jComboBoxTipoReparacion.setFont(new java.awt.Font("Lucida Console", 0, 11)); // NOI18N
+        jComboBoxTipoReparacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SOFTWARE", "HARDWARE" }));
 
         javax.swing.GroupLayout jPanel34Layout = new javax.swing.GroupLayout(jPanel34);
         jPanel34.setLayout(jPanel34Layout);
@@ -588,7 +588,7 @@ public class UsaComputador extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel28)
                 .addGap(29, 29, 29)
-                .addComponent(jComboBox3, 0, 101, Short.MAX_VALUE)
+                .addComponent(jComboBoxTipoReparacion, 0, 101, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel34Layout.setVerticalGroup(
@@ -597,7 +597,7 @@ public class UsaComputador extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxTipoReparacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -608,8 +608,8 @@ public class UsaComputador extends javax.swing.JFrame {
         jLabel29.setFont(new java.awt.Font("Lucida Console", 2, 12)); // NOI18N
         jLabel29.setText("HORAS");
 
-        jTextField14.setFont(new java.awt.Font("Lucida Console", 0, 11)); // NOI18N
-        jTextField14.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldHorasReparacion.setFont(new java.awt.Font("Lucida Console", 0, 11)); // NOI18N
+        jTextFieldHorasReparacion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         javax.swing.GroupLayout jPanel35Layout = new javax.swing.GroupLayout(jPanel35);
         jPanel35.setLayout(jPanel35Layout);
@@ -619,7 +619,7 @@ public class UsaComputador extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel29)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldHorasReparacion, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel35Layout.setVerticalGroup(
@@ -628,7 +628,7 @@ public class UsaComputador extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel29)
-                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldHorasReparacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -640,8 +640,8 @@ public class UsaComputador extends javax.swing.JFrame {
         jLabel30.setText("DESCRIPCIÓN");
         jLabel30.setToolTipText("");
 
-        jTextField15.setFont(new java.awt.Font("Lucida Console", 0, 8)); // NOI18N
-        jTextField15.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldDescripcionReparacion.setFont(new java.awt.Font("Lucida Console", 0, 8)); // NOI18N
+        jTextFieldDescripcionReparacion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         javax.swing.GroupLayout jPanel36Layout = new javax.swing.GroupLayout(jPanel36);
         jPanel36.setLayout(jPanel36Layout);
@@ -649,7 +649,7 @@ public class UsaComputador extends javax.swing.JFrame {
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel36Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField15)
+                .addComponent(jTextFieldDescripcionReparacion)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel36Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -662,7 +662,7 @@ public class UsaComputador extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel30)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldDescripcionReparacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -693,11 +693,11 @@ public class UsaComputador extends javax.swing.JFrame {
                 .addContainerGap(59, Short.MAX_VALUE))
         );
 
-        jButton4.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
-        jButton4.setText("INSERTAR REPARACION");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButtonInsertarReparacion.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
+        jButtonInsertarReparacion.setText("INSERTAR REPARACION");
+        jButtonInsertarReparacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButtonInsertarReparacionActionPerformed(evt);
             }
         });
 
@@ -711,7 +711,7 @@ public class UsaComputador extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel25Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonInsertarReparacion, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41))
         );
         jPanel25Layout.setVerticalGroup(
@@ -720,19 +720,19 @@ public class UsaComputador extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(jButtonInsertarReparacion)
                 .addGap(99, 99, 99))
         );
 
-        jButton1.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
-        jButton1.setText("GUARDAR DATOS");
+        jButtonGuardarDatos.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
+        jButtonGuardarDatos.setText("GUARDAR DATOS");
 
-        jButton2.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
-        jButton2.setText("RECUPERAR DATOS");
+        jButtonRecuperarDatos.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
+        jButtonRecuperarDatos.setText("RECUPERAR DATOS");
 
         jPanel2.setBackground(new java.awt.Color(45, 53, 59));
 
-        jButton6.setText("SALIR");
+        jButtonSalir.setText("SALIR");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -740,14 +740,14 @@ public class UsaComputador extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(393, 393, 393)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton6)
+                .addComponent(jButtonSalir)
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -780,8 +780,8 @@ public class UsaComputador extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButtonRecuperarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonGuardarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -799,10 +799,10 @@ public class UsaComputador extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(62, 62, 62)
-                        .addComponent(jButton1)
+                        .addComponent(jButtonGuardarDatos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addComponent(jButtonRecuperarDatos)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -811,7 +811,7 @@ public class UsaComputador extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(33, Short.MAX_VALUE)
+                .addContainerGap(71, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31))
         );
@@ -820,64 +820,86 @@ public class UsaComputador extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        String id = jTextField1.getText();
-        String marca = jComboBox2.getSelectedItem().toString();
-        String tipoComputador = jComboBox1.getSelectedItem().toString();
-        
-        int cedula = Integer.parseInt(jTextField9.getText());
-//        try{ 
-//            cedula = Integer.parseInt(jTextField9.getText());
-//        }catch(NumberFormatException e)
-//        {
-//            JOptionPane.showInputDialog(null,
-//                    "Corrige la información de la CEDULA. Recuerda que es un NUMERO ENTERO \n" +
-//                    "Mensaje Excepcion= " + e.getMessage()+"\n"+
-//                    "ToString= " + e.toString());
-//        }
+    private void insertarComputadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarComputadorActionPerformed
+          String error = "";
+          
+          String idComputador = jTextFieldIdComputador.getText();
+          if (idComputador.isEmpty()) {
+              error += "El campo IDENTIFICADOR no puede estar vacio.\n";
+          }
+          
+          String marca = jComboBoxMarca.getSelectedItem().toString();
+          String tipoComputador = jComboBoxGarantia.getSelectedItem().toString();
+          
+          int cedula = 0;
+          try{
+              cedula = Integer.parseInt(jTextFieldCedula.getText());
+          } catch (Exception e) {
+              error += "El campo CEDULA debe ser un numero entero.\n";
+          }
+          
+          String nombre = jTextFieldNombre.getText();
+          if (nombre.isEmpty()) {
+              error += "El campo NOMBRE no puede estar vacio.\n";
+          }
+          
+          int celular = 0;
+          try {
+              celular = Integer.parseInt(jTextFieldCelular.getText());
+          } catch (Exception e) {
+              error += "El campo CELULAR debe ser un numero entero.\n";
+          }
+          
+          if (!error.isEmpty()){
+              JOptionPane.showMessageDialog(rootPane, error, "ERROR", JOptionPane.ERROR_MESSAGE);
+              return;
+          }
+          
+          Propietario propietario = new Propietario(cedula, nombre, celular);
+          
+          if (tipoComputador.equals("CON GARANTIA")) {
+              try {
+                  LocalDate finGarantia = LocalDate.parse(jTextFieldGarantia.getText());
+                  losComputadores.add(new ComputadorConGarantia(finGarantia, idComputador, marca, propietario));
+              } catch (Exception e) {
+                  JOptionPane.showMessageDialog(rootPane, "El campo FECHA FINAL GARANTIA para computadores CON GARANTIA debe llenarse con una fecha en formato aaaa-mm-dd y debe ser mayor a " + LocalDate.now() + "\n", "ERROR", JOptionPane.ERROR_MESSAGE);
+                  return;
+              }
+          } else {
+              try {
+                  int costo = Integer.parseInt(jTextFieldCosto.getText());
+                  losComputadores.add(new ComputadorSinGarantia(costo, idComputador, marca, propietario));
+              } catch (NumberFormatException e) {
+                  JOptionPane.showMessageDialog(rootPane, "El campo COSTO para computadores SIN GARANTIA debe ser un numero entero.\n", "ERROR", JOptionPane.ERROR_MESSAGE);
+                  return;
+              }
+          }
+          jTextFieldIdComputador.setText(null);
+          jTextFieldCedula.setText(null);
+          jTextFieldNombre.setText(null);
+          jTextFieldCelular.setText(null);
+          jTextFieldGarantia.setText(null);
+          jTextFieldCosto.setText(null);
+    }//GEN-LAST:event_insertarComputadorActionPerformed
 
-        String nombre = jTextField8.getText();
-        int celular = Integer.parseInt(jTextField7.getText());
-        
-        Propietario objP = new Propietario(cedula,nombre,celular);
-        
-        if(tipoComputador.equals("CON GARANTIA")){
-            LocalDate finGarantia = LocalDate(jTextField2.getText());
-            ComputadorConGarantia objCG = new ComputadorConGarantia(finGarantia, id, marca, objP);
-            losComputadores.add(objCG);
-        }else{
-            int costo = Integer.parseInt(jTextField3.getText());
-            ComputadorSinGarantia objSG = new ComputadorSinGarantia(costo, id, marca, objP);
-            losComputadores.add(objSG);
-        }
-        
-        jTextField1.setText(null);
-        jTextField9.setText(null);
-        jTextField8.setText(null);
-        jTextField7.setText(null);
-        jTextField2.setText(null);
-        jTextField3.setText(null);
-        
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void jButtonEjecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEjecutarActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jButtonEjecutarActionPerformed
 
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        String tipo = jComboBox3.getSelectedItem().toString();
-        String descripcion = jTextField15.getText();
-        double horas = Double.parseDouble(jTextField14.getText());   
+    private void jButtonInsertarReparacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertarReparacionActionPerformed
+        String tipo = jComboBoxTipoReparacion.getSelectedItem().toString();
+        String descripcion = jTextFieldDescripcionReparacion.getText();
+        double horas = Double.parseDouble(jTextFieldHorasReparacion.getText());   
         
-        jTextField15.setText(null);
-        jTextField14.setText(null);
-    }//GEN-LAST:event_jButton4ActionPerformed
+        jTextFieldDescripcionReparacion.setText(null);
+        jTextFieldHorasReparacion.setText(null);
+    }//GEN-LAST:event_jButtonInsertarReparacionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -915,16 +937,16 @@ public class UsaComputador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox5;
+    private javax.swing.JButton insertarComputador;
+    private javax.swing.JButton jButtonEjecutar;
+    private javax.swing.JButton jButtonGuardarDatos;
+    private javax.swing.JButton jButtonInsertarReparacion;
+    private javax.swing.JButton jButtonRecuperarDatos;
+    private javax.swing.JButton jButtonSalir;
+    private javax.swing.JComboBox<String> jComboBoxGarantia;
+    private javax.swing.JComboBox<String> jComboBoxMarca;
+    private javax.swing.JComboBox<String> jComboBoxTipoReparacion;
+    private javax.swing.JComboBox<String> jComboBoxTipoReporte;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -966,14 +988,14 @@ public class UsaComputador extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField jTextFieldCedula;
+    private javax.swing.JTextField jTextFieldCelular;
+    private javax.swing.JTextField jTextFieldCosto;
+    private javax.swing.JTextField jTextFieldDescripcionReparacion;
+    private javax.swing.JTextField jTextFieldGarantia;
+    private javax.swing.JTextField jTextFieldHorasReparacion;
+    private javax.swing.JTextField jTextFieldIdComputador;
+    private javax.swing.JTextField jTextFieldNombre;
     // End of variables declaration//GEN-END:variables
 
     private LocalDate LocalDate(String text) {
