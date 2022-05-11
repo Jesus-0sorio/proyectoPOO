@@ -4,13 +4,11 @@
  * and open the template in the editor.
  */
 package Modelo;
-
 import java.util.ArrayList;
 
 /**
  *
  * @author LALU1026
- *
  */
 public class Computador {
     protected String id;

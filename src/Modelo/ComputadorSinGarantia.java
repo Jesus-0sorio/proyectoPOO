@@ -8,12 +8,13 @@ package Modelo;
 /**
  *
  * @author LALU1026
- * 
  */
-public class ComputadorSinGarantia {
+
+public class ComputadorSinGarantia extends Computador {
     private int costo;
 
-    public ComputadorSinGarantia(int costo) {
+    public ComputadorSinGarantia(int costo, String id, String marca, Propietario suPropietario) {
+        super(id, marca, suPropietario);
         this.costo = costo;
     }
 
