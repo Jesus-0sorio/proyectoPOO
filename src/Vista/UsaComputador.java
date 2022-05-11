@@ -13,7 +13,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import javafx.scene.layout.Border;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 
@@ -30,6 +31,13 @@ public class UsaComputador extends javax.swing.JFrame {
     
     public UsaComputador() {
         initComponents();
+        jComboBoxResultadosComputador.removeAllItems();
+        jComboBoxResultadosComputador.addItem("--Seleccione--");
+        //Eliminar eto xd
+        Propietario suPropietario = new Propietario(1, "Juan", 1);
+        losComputadores.add(new ComputadorSinGarantia(300, "LM0101", "Lenovo", suPropietario));
+        losComputadores.add(new ComputadorSinGarantia(300, "LM0102", "Lenovo", suPropietario));
+        losComputadores.add(new ComputadorSinGarantia(300, "LM0103", "Lenovo", suPropietario));
     }
 
     /**
@@ -96,8 +104,8 @@ public class UsaComputador extends javax.swing.JFrame {
         jTextFieldDescripcionReparacion = new javax.swing.JTextField();
         jPanel37 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
-        jTextField16 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jTextFieldIdComputadorx2 = new javax.swing.JTextField();
+        jComboBoxResultadosComputador = new javax.swing.JComboBox<>();
         buscarComputador = new javax.swing.JButton();
         jButtonInsertarReparacion = new javax.swing.JButton();
         jButtonGuardarDatos = new javax.swing.JButton();
@@ -693,15 +701,20 @@ public class UsaComputador extends javax.swing.JFrame {
         jLabel31.setText("COMPUTADOR");
         jLabel31.setToolTipText("");
 
-        jTextField16.setFont(new java.awt.Font("Lucida Console", 0, 8)); // NOI18N
-        jTextField16.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldIdComputadorx2.setFont(new java.awt.Font("Lucida Console", 0, 8)); // NOI18N
+        jTextFieldIdComputadorx2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        jComboBox1.setFont(new java.awt.Font("Lucida Console", 0, 11)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxResultadosComputador.setFont(new java.awt.Font("Lucida Console", 0, 11)); // NOI18N
+        jComboBoxResultadosComputador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         buscarComputador.setFont(new java.awt.Font("Lucida Console", 0, 11)); // NOI18N
         buscarComputador.setText("BUSCAR");
         buscarComputador.setToolTipText("");
+        buscarComputador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarComputadorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel37Layout = new javax.swing.GroupLayout(jPanel37);
         jPanel37.setLayout(jPanel37Layout);
@@ -714,8 +727,8 @@ public class UsaComputador extends javax.swing.JFrame {
             .addGroup(jPanel37Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField16)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextFieldIdComputadorx2)
+                    .addComponent(jComboBoxResultadosComputador, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buscarComputador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -725,11 +738,11 @@ public class UsaComputador extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel31)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldIdComputadorx2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(buscarComputador, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBoxResultadosComputador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
         );
 
@@ -1026,12 +1039,26 @@ public class UsaComputador extends javax.swing.JFrame {
             error += "El campo HORAS debe ser un numero entero.\n";
         }
         
+        String idComputador = jComboBoxResultadosComputador.getSelectedItem().toString();
+        if (idComputador.isEmpty()) {
+            error += "El campo COMPUTADOR no puede estar vacio.\n";
+        }
+        
         if (!error.isEmpty()){
             JOptionPane.showMessageDialog(rootPane, error, "ERROR", JOptionPane.ERROR_MESSAGE);
             return;
         }
         
+        Reparacion reparacion = new Reparacion(tipo, descripcion, horas);
         
+        for (Computador pc : losComputadores) {
+            if (pc.getId().equals(idComputador)) {
+                ArrayList<Reparacion> reparaciones = pc.getSusReparaciones();
+                reparaciones.add(reparacion);
+                pc.setSusReparaciones(reparaciones);
+                return;
+            }
+        }
     }//GEN-LAST:event_jButtonInsertarReparacionActionPerformed
 
     private void jButtonGuardarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarDatosActionPerformed
@@ -1074,6 +1101,22 @@ public class UsaComputador extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButtonRecuperarDatosActionPerformed
+
+    private void buscarComputadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarComputadorActionPerformed
+        // TODO add your handling code here:
+        String idComputador = jTextFieldIdComputadorx2.getText();
+        jComboBoxResultadosComputador.removeAllItems();
+        for (Computador pc : losComputadores) {
+            Pattern pattern = Pattern.compile(idComputador, Pattern.CASE_INSENSITIVE);
+            Matcher matcher = pattern.matcher(pc.getId());
+            if (matcher.find()) {
+                jComboBoxResultadosComputador.addItem(pc.getId());
+            }
+        }
+        if (jComboBoxResultadosComputador.getItemCount() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "No se ha encontrado ningun Computador que coincida con el Id " + idComputador, "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_buscarComputadorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1118,9 +1161,9 @@ public class UsaComputador extends javax.swing.JFrame {
     private javax.swing.JButton jButtonInsertarReparacion;
     private javax.swing.JButton jButtonRecuperarDatos;
     private javax.swing.JButton jButtonSalir;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBoxGarantia;
     private javax.swing.JComboBox<String> jComboBoxMarca;
+    private javax.swing.JComboBox<String> jComboBoxResultadosComputador;
     private javax.swing.JComboBox<String> jComboBoxTipoReparacion;
     private javax.swing.JComboBox<String> jComboBoxTipoReporte;
     private javax.swing.JLabel jLabel10;
@@ -1166,7 +1209,6 @@ public class UsaComputador extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextFieldCedula;
     private javax.swing.JTextField jTextFieldCelular;
     private javax.swing.JTextField jTextFieldCosto;
@@ -1174,6 +1216,7 @@ public class UsaComputador extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldGarantia;
     private javax.swing.JTextField jTextFieldHorasReparacion;
     private javax.swing.JTextField jTextFieldIdComputador;
+    private javax.swing.JTextField jTextFieldIdComputadorx2;
     private javax.swing.JTextField jTextFieldNombre;
     // End of variables declaration//GEN-END:variables
 
