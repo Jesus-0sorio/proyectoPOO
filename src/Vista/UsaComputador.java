@@ -1115,6 +1115,7 @@ public class UsaComputador extends javax.swing.JFrame {
         }
         if (jComboBoxResultadosComputador.getItemCount() == 0) {
             JOptionPane.showMessageDialog(rootPane, "No se ha encontrado ningun Computador que coincida con el Id " + idComputador, "ERROR", JOptionPane.ERROR_MESSAGE);
+            jComboBoxResultadosComputador.addItem("--Seleccione--");
         }
     }//GEN-LAST:event_buscarComputadorActionPerformed
 
