@@ -5,11 +5,13 @@
  */
 package Modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author LALU1026
  */
-public class Reparacion {
+public class Reparacion implements Serializable {
     private String tipo;
     private String descripcion;
     private double horas;

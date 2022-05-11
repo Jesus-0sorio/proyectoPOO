@@ -4,13 +4,14 @@
  * and open the template in the editor.
  */
 package Modelo;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author LALU1026
  */
-public class Computador {
+public class Computador implements Serializable {
     protected String id;
     protected String marca;
     protected Propietario suPropietario;

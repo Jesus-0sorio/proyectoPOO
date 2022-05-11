@@ -5,11 +5,13 @@
  */
 package Modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author LALU1026
  */
-public class Propietario {
+public class Propietario implements Serializable {
     private int cedula;
     private String nombre;
     private int celular;
