@@ -46,5 +46,10 @@ public class Propietario implements Serializable {
         this.celular = celular;
     }
 
+    @Override
+    public String toString() {
+        return " Cedula =" + cedula;
+    }
+
     
 }

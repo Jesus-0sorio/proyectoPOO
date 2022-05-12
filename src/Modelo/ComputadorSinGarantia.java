@@ -25,6 +25,14 @@ public class ComputadorSinGarantia extends Computador {
     public void setCosto(int costo) {
         this.costo = costo;
     }
+    
+    public double calcularValorReparacion(){
+        double res = 0;
+        for (Reparacion obj: susReparaciones) {
+            res = obj.calcularValorReparacion();
+        }
+        return res;
+    }
 
     @Override
     public String toString() {

@@ -620,7 +620,7 @@ public class UsaComputador extends javax.swing.JFrame {
             .addGroup(jPanel34Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel28)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
             .addGroup(jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel34Layout.createSequentialGroup()
                     .addContainerGap()
@@ -828,6 +828,11 @@ public class UsaComputador extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(45, 53, 59));
 
         jButtonSalir.setText("SALIR");
+        jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -841,8 +846,8 @@ public class UsaComputador extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonSalir)
+                .addContainerGap()
+                .addComponent(jButtonSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -921,7 +926,60 @@ public class UsaComputador extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    public String listarComputadores(ArrayList<Computador> info){
+        info.sort((p2, p1) -> p1.getId().compareTo(p2.getId()));
+        String res = "Los computadores resgistrados son:\n"+
+                   "=======================\n";
+        for(int i = 0; i < info.size(); i++){
+           res += "ID = " + info.get(i).getId();
+           
+           if(info.get(i) instanceof ComputadorConGarantia){
+               res += " CON GARANTIA" + info.get(i).getSuPropietario().toString() + "\nLas reparaciones realizadas son:\n";
+               for(Reparacion bd: info.get(i).getSusReparaciones()){
+                   res +=  bd.getDescripcion() + "\n";
+               }
+           }
+           else{
+               res += " SIN GARANTIA" + info.get(i).getSuPropietario().toString() + "\nLas reparaciones realizadas son:\n";
+               for(Reparacion bd: info.get(i).getSusReparaciones()){
+                   res +=  bd.getDescripcion() + "\n";
+               }
+           }
+           res += "\n";
+        }
+        return res;
+    }
+    
+    public String listarComputador(ArrayList<Computador> info, String id){
+        String res = "";
+        
+        for(int i = 0; i < info.size(); i ++){
+            res = info.get(i).getId();
+            if(res.equals(id)){
+                if(info.get(i) instanceof ComputadorConGarantia){
+                    ComputadorConGarantia pcG = (ComputadorConGarantia) info.get(i);
+                    res = "Indentif = " + res + " Marca = " + pcG.getMarca() + " FinGarantia = " + pcG.getFinGarantia() + 
+                            "\n\tPropietario\nCedula = " + pcG.getSuPropietario().getCedula() + " Nombre = " + pcG.getSuPropietario().getNombre() + " Celular = " + pcG.getSuPropietario().getCelular() + 
+                            "\n\tReparacion\n";
+                    for(Reparacion bd: pcG.getSusReparaciones()){
+                        res +=  "Descripcion = " +bd.getDescripcion() + " Horas = " + bd.getHoras() + " Tipo = " + bd.getTipo() +"\n";
+               }
+           }
+           else{
+               ComputadorSinGarantia pcSG = (ComputadorSinGarantia) info.get(i);
+                    res = "Indentif = " + res + " Marca = " + pcSG.getMarca() + " Costo = " + pcSG.getCosto() + 
+                            "\n\tPropietario\nCedula = " + pcSG.getSuPropietario().getCedula() + " Nombre = " + pcSG.getSuPropietario().getNombre() + " Celular = " + pcSG.getSuPropietario().getCelular() + 
+                            "\n\tReparacion\n";
+                    for(Reparacion bd: pcSG.getSusReparaciones()){
+                        res +=  "Descripcion = " +bd.getDescripcion() + " Horas = " + bd.getHoras() + " Tipo = " + bd.getTipo() +"\n";
+                    }
+                }
+            }
+        }
+        return res;
+    }
+    
     private void insertarComputadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarComputadorActionPerformed
         String error = "";
         
@@ -1019,7 +1077,15 @@ public class UsaComputador extends javax.swing.JFrame {
     }//GEN-LAST:event_insertarComputadorActionPerformed
 
     private void jButtonEjecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEjecutarActionPerformed
-
+        String res = jComboBoxTipoReporte.getSelectedItem().toString();
+        if(res.equals("LISTAR TODOS")){
+            jTextArea1.setText(listarComputadores(losComputadores));
+        }
+        else{
+            String id = JOptionPane.showInputDialog("Ingrese la identificacion del computador que desea buscar: ");
+            jTextArea1.setText(listarComputador(losComputadores, id));
+        }
+        
     }//GEN-LAST:event_jButtonEjecutarActionPerformed
 
     private void jButtonInsertarReparacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertarReparacionActionPerformed
@@ -1034,7 +1100,7 @@ public class UsaComputador extends javax.swing.JFrame {
         
         double horas = 0;
         try {
-            horas = Integer.parseInt(jTextFieldHorasReparacion.getText());
+            horas = Double.parseDouble(jTextFieldHorasReparacion.getText());
         } catch (Exception e) {
             error += "El campo HORAS debe ser un numero entero.\n";
         }
@@ -1118,6 +1184,11 @@ public class UsaComputador extends javax.swing.JFrame {
             jComboBoxResultadosComputador.addItem("--Seleccione--");
         }
     }//GEN-LAST:event_buscarComputadorActionPerformed
+
+    private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButtonSalirActionPerformed
 
     /**
      * @param args the command line arguments
