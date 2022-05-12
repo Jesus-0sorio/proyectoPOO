@@ -7,15 +7,23 @@ package Vista;
 
 import Modelo.*;
 import java.awt.Color;
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.BorderFactory;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,16 +36,14 @@ public class UsaComputador extends javax.swing.JFrame {
      * Creates new form UsaComputador
      */
     ArrayList<Computador> losComputadores = new ArrayList<>();
+    private LocalTime lastSaved;
+    private int timeOut = 10;
     
     public UsaComputador() {
         initComponents();
         jComboBoxResultadosComputador.removeAllItems();
         jComboBoxResultadosComputador.addItem("--Seleccione--");
-        //Eliminar eto xd
-        Propietario suPropietario = new Propietario(1, "Juan", 1);
-        losComputadores.add(new ComputadorSinGarantia(300, "LM0101", "Lenovo", suPropietario));
-        losComputadores.add(new ComputadorSinGarantia(300, "LM0102", "Lenovo", suPropietario));
-        losComputadores.add(new ComputadorSinGarantia(300, "LM0103", "Lenovo", suPropietario));
+        lastSaved = LocalTime.now();
     }
 
     /**
@@ -51,10 +57,11 @@ public class UsaComputador extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jButtonEjecutar = new javax.swing.JButton();
         jComboBoxTipoReporte = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
+        jTextFieldIdComputadorx3 = new javax.swing.JTextField();
         jPanel24 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
@@ -113,6 +120,8 @@ public class UsaComputador extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jButtonSalir = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        jButtonExportarDatos = new javax.swing.JButton();
+        jButtonBorrarDatos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -123,10 +132,6 @@ public class UsaComputador extends javax.swing.JFrame {
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jPanel5.setBackground(new java.awt.Color(45, 53, 59));
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
 
         jButtonEjecutar.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
         jButtonEjecutar.setText("EJECUTAR");
@@ -139,6 +144,12 @@ public class UsaComputador extends javax.swing.JFrame {
         jComboBoxTipoReporte.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
         jComboBoxTipoReporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LISTAR TODOS", "UNICAMENTE" }));
 
+        jTextPane1.setContentType("text/html"); // NOI18N
+        jScrollPane2.setViewportView(jTextPane1);
+
+        jTextFieldIdComputadorx3.setFont(new java.awt.Font("Lucida Console", 0, 8)); // NOI18N
+        jTextFieldIdComputadorx3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -146,22 +157,26 @@ public class UsaComputador extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jComboBoxTipoReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldIdComputadorx3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonEjecutar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 1, Short.MAX_VALUE)))
+                        .addComponent(jButtonEjecutar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxTipoReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldIdComputadorx3)
                     .addComponent(jButtonEjecutar))
                 .addContainerGap())
         );
@@ -758,7 +773,7 @@ public class UsaComputador extends javax.swing.JFrame {
                     .addComponent(jPanel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel34, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel37, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel32Layout.setVerticalGroup(
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -794,7 +809,7 @@ public class UsaComputador extends javax.swing.JFrame {
                     .addGroup(jPanel25Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jButtonInsertarReparacion, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(15, Short.MAX_VALUE))
                     .addGroup(jPanel25Layout.createSequentialGroup()
                         .addComponent(jPanel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
@@ -864,6 +879,22 @@ public class UsaComputador extends javax.swing.JFrame {
             .addGap(0, 18, Short.MAX_VALUE)
         );
 
+        jButtonExportarDatos.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
+        jButtonExportarDatos.setText("EXPORTAR DATOS");
+        jButtonExportarDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExportarDatosActionPerformed(evt);
+            }
+        });
+
+        jButtonBorrarDatos.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
+        jButtonBorrarDatos.setText("BORRAR DATOS");
+        jButtonBorrarDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBorrarDatosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -879,7 +910,9 @@ public class UsaComputador extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButtonGuardarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonRecuperarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jButtonRecuperarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonExportarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonBorrarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
@@ -900,7 +933,11 @@ public class UsaComputador extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jButtonGuardarDatos)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonRecuperarDatos))
+                                .addComponent(jButtonRecuperarDatos)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonExportarDatos)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonBorrarDatos))
                             .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -913,8 +950,8 @@ public class UsaComputador extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -983,7 +1020,7 @@ public class UsaComputador extends javax.swing.JFrame {
     private void insertarComputadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarComputadorActionPerformed
         String error = "";
         
-        String idComputador = jTextFieldIdComputador.getText();
+        String idComputador = jTextFieldIdComputador.getText().toUpperCase();
         if (idComputador.isEmpty()) {
             error += "El campo IDENTIFICADOR no puede estar vacio.\n";
             jTextFieldIdComputador.setBackground(Color.decode("#F5DADA"));
@@ -1077,6 +1114,7 @@ public class UsaComputador extends javax.swing.JFrame {
     }//GEN-LAST:event_insertarComputadorActionPerformed
 
     private void jButtonEjecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEjecutarActionPerformed
+<<<<<<< HEAD
         String res = jComboBoxTipoReporte.getSelectedItem().toString();
         if(res.equals("LISTAR TODOS")){
             jTextArea1.setText(listarComputadores(losComputadores));
@@ -1084,11 +1122,34 @@ public class UsaComputador extends javax.swing.JFrame {
         else{
             String id = JOptionPane.showInputDialog("Ingrese la identificacion del computador que desea buscar: ");
             jTextArea1.setText(listarComputador(losComputadores, id));
+=======
+        jTextPane1.setText("");
+        jTextFieldIdComputadorx3.setBackground(Color.white);
+        jTextFieldIdComputadorx3.setBorder(null);
+        String tipoReporte = jComboBoxTipoReporte.getSelectedItem().toString();
+        if (tipoReporte.equals("LISTAR TODOS")) {
+            jTextPane1.setText(generarReporteGeneral());
+        } else {
+            String idComputador = jTextFieldIdComputadorx3.getText().toUpperCase();
+            if (idComputador.isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "El campo id no puede estar vacio en la busqueda por id.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                jTextFieldIdComputadorx3.setBackground(Color.decode("#F5DADA"));
+                jTextFieldIdComputadorx3.setBorder(BorderFactory.createLineBorder(Color.red));
+                return;
+            }
+            jTextPane1.setText(generarReportePorId(idComputador));
+>>>>>>> 6526e3ae95908568a36c097caf2e323598b8b1d7
         }
         
     }//GEN-LAST:event_jButtonEjecutarActionPerformed
 
     private void jButtonInsertarReparacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertarReparacionActionPerformed
+        jTextFieldDescripcionReparacion.setBackground(null);
+        jTextFieldDescripcionReparacion.setBorder(null);
+        jTextFieldHorasReparacion.setBackground(null);
+        jTextFieldHorasReparacion.setBorder(null);
+
+        
         String error = "";
         
         String tipo = jComboBoxTipoReparacion.getSelectedItem().toString();
@@ -1096,19 +1157,20 @@ public class UsaComputador extends javax.swing.JFrame {
         String descripcion = jTextFieldDescripcionReparacion.getText();
         if (descripcion.isEmpty()) {
             error += "El campo DESCRIPCION no puede estar vacio.\n";
+            jTextFieldDescripcionReparacion.setBackground(Color.decode("#F5DADA"));
+            jTextFieldDescripcionReparacion.setBorder(BorderFactory.createLineBorder(Color.red));
         }
         
         double horas = 0;
         try {
             horas = Double.parseDouble(jTextFieldHorasReparacion.getText());
         } catch (Exception e) {
-            error += "El campo HORAS debe ser un numero entero.\n";
+            error += "El campo HORAS debe ser un numero real.\n";
+            jTextFieldHorasReparacion.setBackground(Color.decode("#F5DADA"));
+            jTextFieldHorasReparacion.setBorder(BorderFactory.createLineBorder(Color.red));
         }
         
         String idComputador = jComboBoxResultadosComputador.getSelectedItem().toString();
-        if (idComputador.isEmpty()) {
-            error += "El campo COMPUTADOR no puede estar vacio.\n";
-        }
         
         if (!error.isEmpty()){
             JOptionPane.showMessageDialog(rootPane, error, "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -1116,6 +1178,9 @@ public class UsaComputador extends javax.swing.JFrame {
         }
         
         Reparacion reparacion = new Reparacion(tipo, descripcion, horas);
+        
+        jTextFieldDescripcionReparacion.setText(null);
+        jTextFieldHorasReparacion.setText(null);
         
         for (Computador pc : losComputadores) {
             if (pc.getId().equals(idComputador)) {
@@ -1129,32 +1194,16 @@ public class UsaComputador extends javax.swing.JFrame {
 
     private void jButtonGuardarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarDatosActionPerformed
         // TODO add your handling code here:
-        ObjectOutputStream output = null;
-        try {
-            output = new ObjectOutputStream(new FileOutputStream("bd.obj"));
-            output.writeObject(losComputadores);
-            JOptionPane.showMessageDialog(rootPane, "Archivos guardados exitosamente.");
-        } catch(Exception e) {
-            JOptionPane.showMessageDialog(rootPane, "Error al guardar los datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
-            System.out.println(e);
-        } finally {
-            try {
-                output.close();
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane, "Error cerrando el archivo de datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
-                System.out.println(e);
-            }
-        }
+        guardarDatos();
     }//GEN-LAST:event_jButtonGuardarDatosActionPerformed
 
     private void jButtonRecuperarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRecuperarDatosActionPerformed
         // TODO add your handling code here:
-        ArrayList<Computador> computadores = new ArrayList<>();
         
         ObjectInputStream input = null;
         try {
             input = new ObjectInputStream(new FileInputStream("bd.obj"));
-            computadores = (ArrayList<Computador>) input.readObject();
+            ArrayList<Computador> computadores = (ArrayList<Computador>) input.readObject();
             losComputadores.addAll(computadores);
             JOptionPane.showMessageDialog(rootPane, "Archivos recuperados exitosamente.");
         } catch (Exception e) {
@@ -1170,26 +1219,192 @@ public class UsaComputador extends javax.swing.JFrame {
 
     private void buscarComputadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarComputadorActionPerformed
         // TODO add your handling code here:
+        jTextFieldIdComputadorx2.setBackground(null);
+        jTextFieldIdComputadorx2.setBorder(null);
+        
         String idComputador = jTextFieldIdComputadorx2.getText();
+        if (idComputador.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "El campo COMPUTADOR no puede estar vacio.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            jTextFieldIdComputadorx2.setBackground(Color.decode("#F5DADA"));
+        jTextFieldIdComputadorx2.setBorder(BorderFactory.createLineBorder(Color.red));
+        }
+        
+        
         jComboBoxResultadosComputador.removeAllItems();
+        Pattern pattern = Pattern.compile(idComputador, Pattern.CASE_INSENSITIVE);
         for (Computador pc : losComputadores) {
-            Pattern pattern = Pattern.compile(idComputador, Pattern.CASE_INSENSITIVE);
             Matcher matcher = pattern.matcher(pc.getId());
             if (matcher.find()) {
                 jComboBoxResultadosComputador.addItem(pc.getId());
             }
         }
         if (jComboBoxResultadosComputador.getItemCount() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "No se ha encontrado ningun Computador que coincida con el Id " + idComputador, "ERROR", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "No se ha encontrado ningun Computador que coincida con el Identificador " + idComputador, "ERROR", JOptionPane.ERROR_MESSAGE);
+            jTextFieldIdComputadorx2.setBackground(Color.decode("#F5DADA"));
+            jTextFieldIdComputadorx2.setBorder(BorderFactory.createLineBorder(Color.red));
             jComboBoxResultadosComputador.addItem("--Seleccione--");
         }
     }//GEN-LAST:event_buscarComputadorActionPerformed
 
+<<<<<<< HEAD
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
+=======
+    private void jButtonExportarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportarDatosActionPerformed
+        // TODO add your handling code here:
+        JFileChooser chooser = new JFileChooser();
+        chooser.setCurrentDirectory(new java.io.File("."));
+        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        chooser.showOpenDialog(rootPane);
+
+        try {
+            String file = chooser.getSelectedFile().toString() + "/output.txt";
+            Files.deleteIfExists(Paths.get(file));
+            PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(file)));
+            output.print("Id --- Marca --- Propietario --- Reparaciones\n");
+            String line = "";
+            for (Computador pc : losComputadores) {
+                line = pc.getId() + " --- " + pc.getMarca() + " --- " + pc.getSuPropietario().toString() + " --- " + pc.getSusReparaciones();
+                output.println(line);
+            }
+            JOptionPane.showMessageDialog(rootPane, "Datos exportados exitosamente.");
+            output.close();
+        } catch(NullPointerException e){
+            return;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Error exportando los datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonExportarDatosActionPerformed
+
+    private void jButtonBorrarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarDatosActionPerformed
+        // TODO add your handling code here:
+        JFileChooser chooser = new JFileChooser();
+        chooser.setCurrentDirectory(new java.io.File("."));
+        try {
+            Files.deleteIfExists(Paths.get(chooser.getCurrentDirectory() + "/bd.obj"));
+            JOptionPane.showMessageDialog(rootPane, "Datos eliminados exitosamente.");
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Error eliminando los datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonBorrarDatosActionPerformed
+
+    private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
+        // TODO add your handling code here:
+        long time = ChronoUnit.SECONDS.between(lastSaved, LocalTime.now());
+        if ( time >= timeOut) {
+            int option = JOptionPane.showConfirmDialog(rootPane, "No has guardado hace " + time + "segundos. ¿Desea guardar antes de salir?");
+            if (option == 0) {
+                guardarDatos();
+                option = 1;
+            }
+            
+            if (option == 1) {
+                System.exit(0);
+            } else { return; }
+        }
+    }//GEN-LAST:event_jButtonSalirActionPerformed
+
+    //eto falta en el uml xd
+    public String generarReporteGeneral(){
+        String res = "<style>td, th {text-align: center; border-bottom:1px solid black;}</style><table width=100%><tr><th colspan='2'><b>COMPUTADORES</b>"
+                + "</th><th>PROPIETARIO</th><th>REPARACIONES</th></tr><tr><th>Id</th><th>Tipo</th>"
+                + "<th>Cedula</th><th>Descripcion</th></tr>";
+        
+        losComputadores.sort((pc1, pc2) -> pc1.getId().compareTo(pc2.getId()));
+        for (Computador pc : losComputadores) {
+            
+            ArrayList<Reparacion> reparaciones = pc.getSusReparaciones();
+            String listaReparaciones = "";
+            if (reparaciones.isEmpty()){
+                listaReparaciones = "No hay reparaciones en curso";
+            } else {
+                int numReparacion = 1;
+                for (Reparacion reparacion : reparaciones){
+                    listaReparaciones += "Reparacion " + numReparacion
+                            + "<br>" + reparacion.getDescripcion() + "<br><br>";
+                }
+            }
+            
+            String tipo = pc instanceof ComputadorSinGarantia? "Sin Garantia" : "Con Garantia";
+            res += "<tr><td>" + pc.getId() + "</td><td>" + tipo + "</td><td>" 
+                    + pc.getSuPropietario().getCedula() + "</td><td>" + listaReparaciones
+                    + "</td></tr>";
+        }
+        return res;
+    }
+    
+    public String generarReportePorId(String idComputador){
+        Computador pc = null;
+        for (Computador c : losComputadores) {
+            if (c.getId().equals(idComputador)) {
+                pc = c;
+                break;
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "No se ha encontrado un computador con el Identificador " + idComputador, "ERROR", JOptionPane.ERROR_MESSAGE);
+                return "";
+            }
+        }
+        String attr = null;
+        String value = null;
+        if (pc instanceof ComputadorSinGarantia) {
+            ComputadorSinGarantia pcSG = (ComputadorSinGarantia) pc;
+            attr = "Costo";
+            value = Integer.toString(pcSG.getCosto());
+        } else {
+            ComputadorConGarantia pcCG = (ComputadorConGarantia) pc;
+            attr = "Fecha fin garantia";
+            value = pcCG.getFinGarantia().toString();
+        }
+        
+        String reparaciones = "<tr>No hay reparaciones en curso.</tr>";
+        if (!pc.getSusReparaciones().isEmpty()) {
+            reparaciones = "<tr><th>Descripcion</th><th>Horas</th><th>Tipo</th></tr>";
+        
+            for (Reparacion reparacion : pc.getSusReparaciones()) {
+                reparaciones += "<tr><td>" + reparacion.getDescripcion()
+                        + "</td><td>" + reparacion.getHoras()+
+                        "</td><td>" + reparacion.getTipo() + "</td></tr>";
+            } 
+        }
+        
+        String res = "<style>th, td {text-align: left; border-bottom:1px solid black;}</style><table width=100%>"
+                + "<tr><th colspan='3' style=text-align:center>COMPUTADOR</th></tr>"
+                + "<tr><th>Identificador</th><td colspan='2'>" + pc.getId()
+                + "</td></tr><tr><th>Marca</th><td colspan='2'>" + pc.getMarca()
+                + "</td></tr><tr><th>"+ attr +"</th><td colspan='2'>" + value
+                + "<tr><th colspan='3' style=text-align:center>PROPIETARIO</th></tr>"
+                + "</td></tr><tr><th>Cedula</th><td colspan='2'>" + pc.getSuPropietario().getCedula()
+                + "</td></tr><tr><th>Nombre</th><td colspan='2'>" + pc.getSuPropietario().getNombre()
+                + "</td></tr><tr><th>Celular</th><td colspan='2'>" + pc.getSuPropietario().getCelular()
+                + "<tr><th colspan='3' style=text-align:center>REPARACIONES</th>" + reparaciones;
+                
+        return res;
+    }
+    
+    public void guardarDatos(){
+        ObjectOutputStream output = null;
+        try {
+            output = new ObjectOutputStream(new FileOutputStream("bd.obj"));
+            output.writeObject(losComputadores);
+            JOptionPane.showMessageDialog(rootPane, "Datos guardados exitosamente.");
+            lastSaved = LocalTime.now();
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Error al guardar los datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            System.out.println(e);
+        } finally {
+            try {
+                output.close();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, "Error cerrando el archivo de datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                System.out.println(e);
+            }
+        }
+    }
+    
+>>>>>>> 6526e3ae95908568a36c097caf2e323598b8b1d7
     /**
      * @param args the command line arguments
      */
@@ -1228,7 +1443,9 @@ public class UsaComputador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buscarComputador;
     private javax.swing.JButton insertarComputador;
+    private javax.swing.JButton jButtonBorrarDatos;
     private javax.swing.JButton jButtonEjecutar;
+    private javax.swing.JButton jButtonExportarDatos;
     private javax.swing.JButton jButtonGuardarDatos;
     private javax.swing.JButton jButtonInsertarReparacion;
     private javax.swing.JButton jButtonRecuperarDatos;
@@ -1278,9 +1495,8 @@ public class UsaComputador extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextFieldCedula;
     private javax.swing.JTextField jTextFieldCelular;
     private javax.swing.JTextField jTextFieldCosto;
@@ -1289,7 +1505,9 @@ public class UsaComputador extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldHorasReparacion;
     private javax.swing.JTextField jTextFieldIdComputador;
     private javax.swing.JTextField jTextFieldIdComputadorx2;
+    private javax.swing.JTextField jTextFieldIdComputadorx3;
     private javax.swing.JTextField jTextFieldNombre;
+    private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
 
     private LocalDate LocalDate(String text) {
