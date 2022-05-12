@@ -51,10 +51,10 @@ public class UsaComputador extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jButtonEjecutar = new javax.swing.JButton();
         jComboBoxTipoReporte = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
         jPanel24 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
@@ -124,10 +124,6 @@ public class UsaComputador extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(45, 53, 59));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
         jButtonEjecutar.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
         jButtonEjecutar.setText("EJECUTAR");
         jButtonEjecutar.addActionListener(new java.awt.event.ActionListener() {
@@ -139,6 +135,9 @@ public class UsaComputador extends javax.swing.JFrame {
         jComboBoxTipoReporte.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
         jComboBoxTipoReporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LISTAR TODOS", "UNICAMENTE" }));
 
+        jTextPane1.setContentType("text/html"); // NOI18N
+        jScrollPane2.setViewportView(jTextPane1);
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -146,19 +145,20 @@ public class UsaComputador extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jComboBoxTipoReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonEjecutar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 1, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(28, 28, 28))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxTipoReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -758,7 +758,7 @@ public class UsaComputador extends javax.swing.JFrame {
                     .addComponent(jPanel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel34, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel37, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel32Layout.setVerticalGroup(
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -794,7 +794,7 @@ public class UsaComputador extends javax.swing.JFrame {
                     .addGroup(jPanel25Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jButtonInsertarReparacion, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(15, Short.MAX_VALUE))
                     .addGroup(jPanel25Layout.createSequentialGroup()
                         .addComponent(jPanel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
@@ -908,8 +908,8 @@ public class UsaComputador extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1019,7 +1019,7 @@ public class UsaComputador extends javax.swing.JFrame {
     }//GEN-LAST:event_insertarComputadorActionPerformed
 
     private void jButtonEjecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEjecutarActionPerformed
-
+        generarReporteGeneral();
     }//GEN-LAST:event_jButtonEjecutarActionPerformed
 
     private void jButtonInsertarReparacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertarReparacionActionPerformed
@@ -1083,12 +1083,11 @@ public class UsaComputador extends javax.swing.JFrame {
 
     private void jButtonRecuperarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRecuperarDatosActionPerformed
         // TODO add your handling code here:
-        ArrayList<Computador> computadores = new ArrayList<>();
         
         ObjectInputStream input = null;
         try {
             input = new ObjectInputStream(new FileInputStream("bd.obj"));
-            computadores = (ArrayList<Computador>) input.readObject();
+            ArrayList<Computador> computadores = (ArrayList<Computador>) input.readObject();
             losComputadores.addAll(computadores);
             JOptionPane.showMessageDialog(rootPane, "Archivos recuperados exitosamente.");
         } catch (Exception e) {
@@ -1106,19 +1105,34 @@ public class UsaComputador extends javax.swing.JFrame {
         // TODO add your handling code here:
         String idComputador = jTextFieldIdComputadorx2.getText();
         jComboBoxResultadosComputador.removeAllItems();
+        Pattern pattern = Pattern.compile(idComputador, Pattern.CASE_INSENSITIVE);
         for (Computador pc : losComputadores) {
-            Pattern pattern = Pattern.compile(idComputador, Pattern.CASE_INSENSITIVE);
             Matcher matcher = pattern.matcher(pc.getId());
             if (matcher.find()) {
                 jComboBoxResultadosComputador.addItem(pc.getId());
             }
         }
         if (jComboBoxResultadosComputador.getItemCount() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "No se ha encontrado ningun Computador que coincida con el Id " + idComputador, "ERROR", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "No se ha encontrado ningun Computador que coincida con el Identificador " + idComputador, "ERROR", JOptionPane.ERROR_MESSAGE);
             jComboBoxResultadosComputador.addItem("--Seleccione--");
         }
     }//GEN-LAST:event_buscarComputadorActionPerformed
 
+    //ete falta en el uml xd
+    public String generarReporteGeneral(){
+        String res = "<table width=100%><tr><th colspan='2'><b>COMPUTADORES</b>"
+                + "</th><th>PROPIETARIO</th><th>REPARACIONES</th></tr><tr><th>Id</th><th>Tipo</th>"
+                + "<th>Cedula</th><th>Descripcion</th></tr>";
+        
+        losComputadores.sort((pc1, pc2) -> pc1.getId().compareTo(pc2.getId()));
+        for (Computador pc : losComputadores) {
+            
+        }
+        jTextPane1.setText(res);
+        return res;
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -1207,9 +1221,8 @@ public class UsaComputador extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextFieldCedula;
     private javax.swing.JTextField jTextFieldCelular;
     private javax.swing.JTextField jTextFieldCosto;
@@ -1219,6 +1232,7 @@ public class UsaComputador extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldIdComputador;
     private javax.swing.JTextField jTextFieldIdComputadorx2;
     private javax.swing.JTextField jTextFieldNombre;
+    private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
 
     private LocalDate LocalDate(String text) {
