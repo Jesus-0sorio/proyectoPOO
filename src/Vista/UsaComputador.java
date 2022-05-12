@@ -1200,6 +1200,7 @@ public class UsaComputador extends javax.swing.JFrame {
                 line = pc.getId() + " --- " + pc.getMarca() + " --- " + pc.getSuPropietario().toString() + " --- " + pc.getSusReparaciones();
                 output.println(line);
             }
+            JOptionPane.showMessageDialog(rootPane, "Datos exportados exitosamente.");
             output.close();
         } catch(NullPointerException e){
             return;
