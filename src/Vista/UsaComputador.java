@@ -45,6 +45,13 @@ public class UsaComputador extends javax.swing.JFrame {
         jComboBoxResultadosComputador.addItem("--Seleccione--");
         lastSaved = LocalTime.now();
     }
+    
+    public void llenarDatos(ArrayList<Computador> pc){
+        pc.add(new ComputadorConGarantia(LocalDate.parse("2022-10-25"), "LN20", "LENOVO", new Propietario(94389215, "Camila Rios", 310234567)));
+        pc.add(new ComputadorSinGarantia(2500000, "HP10", "HP", new Propietario(75895678, "Carlos Gomez", 318901234)));
+        pc.add(new ComputadorConGarantia(LocalDate.parse("2023-02-05"), "HA", "HACER", new Propietario(93100819, "Alerto Gomez", 301556789)));
+        pc.add(new ComputadorSinGarantia(3500000, "MC90", "MAC", new Propietario(94500456, "Fabio Rios", 300231556)));
+        pc.add(new ComputadorConGarantia(LocalDate.parse("2022-05-20"), "SM56", "OTRA", new Propietario(91900765, "Camila Vargas", 316908765)));
 
     /**
      * This method is called from within the constructor to initialize the form.
