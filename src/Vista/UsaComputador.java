@@ -20,6 +20,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.BorderFactory;
@@ -50,12 +51,11 @@ public class UsaComputador extends javax.swing.JFrame {
     public void llenarDatos(ArrayList<Computador> pc){
         pc.add(new ComputadorConGarantia(LocalDate.parse("2022-10-25"), "LN20", "LENOVO", new Propietario(94389215, "Camila Rios", 310234567)));
         pc.add(new ComputadorSinGarantia(2500000, "HP10", "HP", new Propietario(75895678, "Carlos Gomez", 318901234)));
-        pc.add(new ComputadorConGarantia(LocalDate.parse("2023-02-05"), "HA49", "HACER", new Propietario(93100819, "Alerto Gomez", 301556789)));
-        new Reparacion("HARDWARE", "Reparacion Disco Duro", 4.0);
+        pc.add(new ComputadorConGarantia(LocalDate.parse("2023-02-05"), "HA", "HACER", new Propietario(93100819, "Alerto Gomez", 301556789)));
+        agregarReparacion("HA", new Reparacion("HARDWARE", "noje que va aqui xd", 5.5));
         pc.add(new ComputadorSinGarantia(3500000, "MC90", "MAC", new Propietario(94500456, "Fabio Rios", 300231556)));
         pc.add(new ComputadorConGarantia(LocalDate.parse("2022-05-20"), "SM56", "OTRA", new Propietario(91900765, "Camila Vargas", 316908765)));
-    }
-
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -1176,26 +1176,8 @@ public class UsaComputador extends javax.swing.JFrame {
         jTextFieldDescripcionReparacion.setText(null);
         jTextFieldHorasReparacion.setText(null);
         
-        
-            
-        
-        for (Computador pc : losComputadores) {
-            if (pc.getId().equals(idComputador)) {
-                ArrayList<Reparacion> reparaciones = pc.getSusReparaciones();
-                reparaciones.add(reparacion);
-                pc.setSusReparaciones(reparaciones);
-                double res  = 0;
-                if(pc instanceof ComputadorConGarantia){
-                    ComputadorConGarantia pcCG = (ComputadorConGarantia) pc;
-                    res = pcCG.calcularValorReparacion();
-                }else{
-                    ComputadorSinGarantia pcSG = (ComputadorSinGarantia) pc;
-                    res = pcSG.calcularValorReparacion();
-                }
-                JOptionPane.showMessageDialog(null, "El valor a pagar por la reparacion es: " + res);
-                return;
-            }
-        }        
+        double res = agregarReparacion(idComputador, reparacion);
+        JOptionPane.showMessageDialog(null, "El valor a pagar por la reparacion es: " + res);        
     }//GEN-LAST:event_jButtonInsertarReparacionActionPerformed
 
     private void jButtonGuardarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarDatosActionPerformed
@@ -1376,10 +1358,11 @@ public class UsaComputador extends javax.swing.JFrame {
             if (c.getId().equals(idComputador)) {
                 pc = c;
                 break;
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "No se ha encontrado un computador con el Identificador " + idComputador, "ERROR", JOptionPane.ERROR_MESSAGE);
-                return "";
             }
+        }
+        if (Objects.isNull(pc)) {
+            JOptionPane.showMessageDialog(rootPane, "No se ha encontrado un computador con el Identificador " + idComputador, "ERROR", JOptionPane.ERROR_MESSAGE);
+            return null;
         }
         String attr = null;
         String value = null;
@@ -1438,6 +1421,18 @@ public class UsaComputador extends javax.swing.JFrame {
         }
     }
     
+    public double agregarReparacion(String idComputador, Reparacion reparacion) {
+        double res = 0.0;
+        for (Computador pc : losComputadores) {
+            if (pc.getId().equals(idComputador)) {
+                ArrayList<Reparacion> reparaciones = pc.getSusReparaciones();
+                reparaciones.add(reparacion);
+                pc.setSusReparaciones(reparaciones);
+                res  = pc.calcularValorReparacion();
+            }
+        }
+        return res;
+    }
     /**
      * @param args the command line arguments
      */
