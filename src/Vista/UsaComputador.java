@@ -1200,10 +1200,11 @@ public class UsaComputador extends javax.swing.JFrame {
         try {
             input = new ObjectInputStream(new FileInputStream("bd.obj"));
             ArrayList<Computador> computadores = (ArrayList<Computador>) input.readObject();
+            losComputadores.clear();
             losComputadores.addAll(computadores);
-            JOptionPane.showMessageDialog(rootPane, "Archivos recuperados exitosamente.");
+            JOptionPane.showMessageDialog(rootPane, "Datos recuperados exitosamente.");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane, "Error recuperando los archivos, por favor, intente de nuevo.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Error recuperando los datos, por favor, intente de nuevo.", "ERROR", JOptionPane.ERROR_MESSAGE);
         } finally {
             try {
                 input.close();
