@@ -27,11 +27,9 @@ public class ComputadorConGarantia extends Computador {
         this.finGarantia = finGarantia;
     }
     
+    @Override
     public double calcularValorReparacion(){
-        double res = 0;
-        for(Reparacion obj: susReparaciones){
-            res = (obj.calcularValorReparacion())/5;
-        }
+        double res = susReparaciones.get(susReparaciones.size()-1).calcularValorReparacion() / 5;
         return res;
     }
 

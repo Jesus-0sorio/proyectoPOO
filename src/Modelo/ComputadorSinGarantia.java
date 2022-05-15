@@ -26,11 +26,9 @@ public class ComputadorSinGarantia extends Computador {
         this.costo = costo;
     }
     
-        public double calcularValorReparacion(){
-        double res = 0;
-        
-        res = susReparaciones.get(susReparaciones.size()-1).calcularValorReparacion();
-        
+    @Override
+    public double calcularValorReparacion(){
+        double res = susReparaciones.get(susReparaciones.size()-1).calcularValorReparacion();
         return res;
     }
 

@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author LALU1026
  */
-public class Computador implements Serializable {
+public abstract class Computador implements Serializable {
     protected String id;
     protected String marca;
     protected Propietario suPropietario;
@@ -55,6 +55,8 @@ public class Computador implements Serializable {
     public void setSusReparaciones(ArrayList<Reparacion> susReparaciones) {
         this.susReparaciones = susReparaciones;
     }
+    
+    public abstract double calcularValorReparacion();
 
     @Override
     public String toString() {
